@@ -18,6 +18,17 @@ app.get("/users", (req, res) => {
 		});
 });
 
+app.get("/posts", (req, res) => {
+	axios
+		.get("https://jsonplaceholder.typicode.com/posts")
+		.then(function (response) {
+			res.send(response.data);
+		})
+		.catch(function (error) {
+			res.send(error);
+		});
+});
+
 app.listen(port, () => {
 	console.log(`server running at port ${port}`);
 });
