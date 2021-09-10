@@ -11,7 +11,7 @@ app.get("/users", (req, res) => {
 	axios
 		.get("https://jsonplaceholder.typicode.com/users")
 		.then(function (response) {
-			res.send(response);
+			res.send(response.data);
 		})
 		.catch(function (error) {
 			res.send(error);
