@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const app = express();
 const port = process.env.port || 3000;
 
@@ -7,9 +8,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/users", (req, res) => {
-	fetch("https://jsonplaceholder.typicode.com/users")
-		.then((response) => response.json())
-		.then((json) => res.send(json));
+	axios
+		.get("https://jsonplaceholder.typicode.com/users")
+		.then(function (response) {
+			res.send(response);
+		})
+		.catch(function (error) {
+			res.send(error);
+		});
 });
 
 app.listen(port, () => {
